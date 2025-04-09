@@ -6,6 +6,9 @@ import java.io.Serializable;
 import java.util.Objects;
 
 public class Occupation implements Serializable {
+
+    // TODO: implement Spring Annotations
+
     private static final long serialVersionUID = 1L;
 
     private Long id;

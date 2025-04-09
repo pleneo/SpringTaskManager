@@ -5,6 +5,9 @@ import java.time.Instant;
 import java.util.Objects;
 
 public class Task implements Serializable {
+
+    // TODO: implement Spring Annotations
+
     private static final long serialVersionUID = 1L;
 
     private Long id;

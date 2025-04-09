@@ -1,6 +1,8 @@
 package com.pleneo.taskmanagerspring.entities.enums;
 
 public enum Seniority {
+    // TODO: implement Spring Annotations
+
     INTERN(1),
     JUNIOR(2),
     SENIOR(3);
