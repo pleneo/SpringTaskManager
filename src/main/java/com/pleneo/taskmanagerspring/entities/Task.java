@@ -1,15 +1,21 @@
 package com.pleneo.taskmanagerspring.entities;
 
+import jakarta.persistence.*;
+
 import java.io.Serializable;
 import java.time.Instant;
 import java.util.Objects;
 
+@Entity
 public class Task implements Serializable {
 
     // TODO: implement Spring Annotations
 
     private static final long serialVersionUID = 1L;
 
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String description;
@@ -17,17 +23,20 @@ public class Task implements Serializable {
     private Instant created_date;
 
     //many-to-one cardinality implementation (one Task has one employee, one employee has many tasks)
+    @ManyToOne
+    @JoinColumn(name = "employee_id")
     private Employee employee;
 
     public Task() {
     }
 
-    public Task(Long id, String name, String description, Instant deadline, Instant created_date) {
+    public Task(Long id, String name, String description, Instant deadline, Instant created_date, Employee employee) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.deadline = deadline;
         this.created_date = created_date;
+        this.employee = employee;
     }
 
     public Long getId() {
@@ -68,6 +77,15 @@ public class Task implements Serializable {
 
     public void setCreated_date(Instant created_date) {
         this.created_date = created_date;
+    }
+
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 
     @Override

@@ -1,19 +1,27 @@
 package com.pleneo.taskmanagerspring.entities;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import com.pleneo.taskmanagerspring.entities.embeddables.Employee_Occupation;
+import jakarta.persistence.*;
 
+import java.io.Serializable;
+import java.util.*;
+
+@Entity
 public class Employee implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String first_name;
     private String surname;
 
     //one-to-many (one employee has many tasks, one task has one employee)
+    @OneToMany(mappedBy = "employee")
     private List<Task> tasks = new ArrayList<>();
+
+    // TODO: implement Employee_Occupation logic.
 
     public Employee() {
     }

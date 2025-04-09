@@ -2,20 +2,26 @@ package com.pleneo.taskmanagerspring.entities.embeddables;
 
 import com.pleneo.taskmanagerspring.entities.Employee;
 import com.pleneo.taskmanagerspring.entities.Occupation;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 import java.io.Serializable;
 import java.util.Objects;
 
-public class EmployeeOccupation implements Serializable {
+@Embeddable
+public class Employee_Occupation implements Serializable {
 
-
-    // TODO: implement Spring Annotations
 
 
     private static final long serialVersionUID = 1L;
 
+    @ManyToOne
+    @JoinColumn(name = "employee.id")
     private Employee employee;
 
+    @ManyToOne
+    @JoinColumn(name = "occupation.id")
     private Occupation occupation;
 
     public Employee getEmployee() {
@@ -38,7 +44,7 @@ public class EmployeeOccupation implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        EmployeeOccupation that = (EmployeeOccupation) o;
+        Employee_Occupation that = (Employee_Occupation) o;
         return Objects.equals(employee, that.employee) && Objects.equals(occupation, that.occupation);
     }
 

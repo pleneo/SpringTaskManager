@@ -1,16 +1,19 @@
 package com.pleneo.taskmanagerspring.entities;
 
 import com.pleneo.taskmanagerspring.entities.enums.Seniority;
+import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.util.Objects;
 
+@Entity
 public class Occupation implements Serializable {
 
-    // TODO: implement Spring Annotations
 
     private static final long serialVersionUID = 1L;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private Seniority seniority;
