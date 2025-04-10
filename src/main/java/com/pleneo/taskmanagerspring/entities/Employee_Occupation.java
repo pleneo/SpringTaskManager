@@ -1,5 +1,6 @@
 package com.pleneo.taskmanagerspring.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.pleneo.taskmanagerspring.entities.pks.Employee_OccupationPK;
 import jakarta.persistence.*;
 
@@ -21,6 +22,7 @@ public class Employee_Occupation implements Serializable {
         id.setOccupation(occupation);
     }
 
+    @JsonIgnore
     public Employee getEmployee() {
         return id.getEmployee();
     }

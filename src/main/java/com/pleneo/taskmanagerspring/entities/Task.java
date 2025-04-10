@@ -1,5 +1,6 @@
 package com.pleneo.taskmanagerspring.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -79,7 +80,7 @@ public class Task implements Serializable {
         this.created_date = created_date;
     }
 
-
+    @JsonIgnore
     public Employee getEmployee() {
         return employee;
     }
