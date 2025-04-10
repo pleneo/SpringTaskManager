@@ -1,6 +1,5 @@
 package com.pleneo.taskmanagerspring.entities;
 
-import com.pleneo.taskmanagerspring.entities.embeddables.Employee_Occupation;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -21,7 +20,9 @@ public class Employee implements Serializable {
     @OneToMany(mappedBy = "employee")
     private List<Task> tasks = new ArrayList<>();
 
-    // TODO: implement Employee_Occupation logic.
+    @OneToMany(mappedBy = "id.employee")
+    private Set<Employee_Occupation> emp_occ = new HashSet<>();
+
 
     public Employee() {
     }
@@ -62,6 +63,10 @@ public class Employee implements Serializable {
 
     public void setTasks(List<Task> tasks) {
         this.tasks = tasks;
+    }
+
+    public Set<Employee_Occupation> getEmp_occ() {
+        return emp_occ;
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.pleneo.taskmanagerspring.entities.embeddables;
+package com.pleneo.taskmanagerspring.entities.pks;
 
 import com.pleneo.taskmanagerspring.entities.Employee;
 import com.pleneo.taskmanagerspring.entities.Occupation;
@@ -10,18 +10,15 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Embeddable
-public class Employee_Occupation implements Serializable {
-
-
-
+public class Employee_OccupationPK implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @ManyToOne
-    @JoinColumn(name = "employee.id")
+    @JoinColumn(name = "employee_id")
     private Employee employee;
 
     @ManyToOne
-    @JoinColumn(name = "occupation.id")
+    @JoinColumn(name = "occupation_id")
     private Occupation occupation;
 
     public Employee getEmployee() {
@@ -44,7 +41,7 @@ public class Employee_Occupation implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Employee_Occupation that = (Employee_Occupation) o;
+        Employee_OccupationPK that = (Employee_OccupationPK) o;
         return Objects.equals(employee, that.employee) && Objects.equals(occupation, that.occupation);
     }
 

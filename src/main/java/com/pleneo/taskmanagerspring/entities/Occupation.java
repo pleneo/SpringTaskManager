@@ -4,7 +4,9 @@ import com.pleneo.taskmanagerspring.entities.enums.Seniority;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 public class Occupation implements Serializable {
@@ -18,7 +20,8 @@ public class Occupation implements Serializable {
     private String name;
     private Seniority seniority;
 
-    // TODO: implement Employee - Occupation many-to-many logic.
+    @OneToMany(mappedBy = "id.occupation")
+    private Set<Employee_Occupation> emp_occ = new HashSet<>();
 
     public Occupation() {
     }
