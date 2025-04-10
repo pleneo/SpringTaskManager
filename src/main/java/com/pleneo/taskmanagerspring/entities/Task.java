@@ -85,6 +85,8 @@ public class Task implements Serializable {
         return employee;
     }
 
+    // TODO create DTO to employee to show his name and avoid making loop calls in API requests.
+
     public void setEmployee(Employee employee) {
         this.employee = employee;
     }
