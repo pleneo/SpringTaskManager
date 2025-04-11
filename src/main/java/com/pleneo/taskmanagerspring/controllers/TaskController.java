@@ -1,7 +1,7 @@
-package com.pleneo.taskmanagerspring.resources;
+package com.pleneo.taskmanagerspring.controllers;
 
-import com.pleneo.taskmanagerspring.entities.Occupation;
-import com.pleneo.taskmanagerspring.services.OccupationService;
+import com.pleneo.taskmanagerspring.entities.Task;
+import com.pleneo.taskmanagerspring.services.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,27 +11,27 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/occupations")
-public class OccupationResource {
+@RequestMapping(value = "/tasks")
+public class TaskController {
 
     @Autowired
-    private OccupationService service;
+    private TaskService service;
 
     @GetMapping
-    public ResponseEntity<List<Occupation>> findAll(){
-        List<Occupation> list = service.findAll();
+    public ResponseEntity<List<Task>> findAll(){
+        List<Task> list = service.findAll();
 
         return ResponseEntity.ok().body(list);
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Occupation> findById(@RequestBody Long id){
-        Occupation obj = service.findById(id);
+    public ResponseEntity<Task> findById(@RequestBody Long id){
+        Task obj = service.findById(id);
         return ResponseEntity.ok().body(obj);
     }
 
     @PostMapping
-    public ResponseEntity<Occupation> insert(@RequestBody Occupation obj){
+    public ResponseEntity<Task> insert(@RequestBody Task obj){
         obj = service.insert(obj);
 
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();

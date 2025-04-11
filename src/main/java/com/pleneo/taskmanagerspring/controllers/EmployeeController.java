@@ -1,8 +1,7 @@
-package com.pleneo.taskmanagerspring.resources;
+package com.pleneo.taskmanagerspring.controllers;
 
 import com.pleneo.taskmanagerspring.entities.Employee;
 import com.pleneo.taskmanagerspring.services.EmployeeService;
-import jakarta.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/employees")
-public class EmployeeResource {
+public class EmployeeController {
 
     @Autowired
     private EmployeeService service;
