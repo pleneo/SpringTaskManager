@@ -25,7 +25,7 @@ public class TaskController {
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Task> findById(@RequestBody Long id){
+    public ResponseEntity<Task> findById(@PathVariable Long id){
         Task obj = service.findById(id);
         return ResponseEntity.ok().body(obj);
     }

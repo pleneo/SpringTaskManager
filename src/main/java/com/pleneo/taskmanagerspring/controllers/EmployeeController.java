@@ -25,7 +25,7 @@ public class EmployeeController {
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Employee> findById(@RequestBody Long id){
+    public ResponseEntity<Employee> findById(@PathVariable Long id){
         Employee obj = service.findById(id);
         return ResponseEntity.ok().body(obj);
     }
