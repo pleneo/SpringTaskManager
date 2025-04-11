@@ -56,9 +56,9 @@ public class TestConfig implements CommandLineRunner {
         );
 
         //Occupations to h2 database
-        Occupation o1 = new Occupation(null, "Tech Lead", Seniority.JUNIOR);
-        Occupation o2 = new Occupation(null, "Front-End Developer", Seniority.SENIOR);
-        Occupation o3 = new Occupation(null, "Back-End Developer", Seniority.INTERN);
+        Occupation o1 = new Occupation(null, "Tech Lead", Seniority.JUNIOR, Instant.now(), null);
+        Occupation o2 = new Occupation(null, "Front-End Developer", Seniority.SENIOR, Instant.now(), null);
+        Occupation o3 = new Occupation(null, "Back-End Developer", Seniority.INTERN, Instant.now(), null);
 
         occupationRepository.saveAll(
                 Arrays.asList(o1,o2,o3)

@@ -21,7 +21,7 @@ public class Employee implements Serializable {
     private List<Task> tasks = new ArrayList<>();
 
     @OneToMany(mappedBy = "id.employee")
-    private Set<Employee_Occupation> emp_occ = new HashSet<>();
+    private Set<Employee_Occupation> occupation = new HashSet<>();
 
 
     public Employee() {
@@ -65,8 +65,8 @@ public class Employee implements Serializable {
         this.tasks = tasks;
     }
 
-    public Set<Employee_Occupation> getEmp_occ() {
-        return emp_occ;
+    public Set<Employee_Occupation> getOccupation() {
+        return occupation;
     }
 
     @Override
