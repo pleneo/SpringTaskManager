@@ -1,5 +1,6 @@
 package com.pleneo.taskmanagerspring.config;
 
+import com.pleneo.taskmanagerspring.dtos.TaskAuthorDTO;
 import com.pleneo.taskmanagerspring.entities.Employee;
 import com.pleneo.taskmanagerspring.entities.Employee_Occupation;
 import com.pleneo.taskmanagerspring.entities.Occupation;
@@ -46,9 +47,9 @@ public class TestConfig implements CommandLineRunner {
         );
 
         //Tasks to h2 database
-        Task t1 = new Task(null, "Varrer Vassourinha", "Varrer inimigos de brasilia", Instant.now(), Instant.now(), e3);
-        Task t2 = new Task(null, "Fazer 50 anos em 5", "Desenvolver 50 anos de industria no Brasil em 5 anos.", Instant.now(), Instant.now(), e1);
-        Task t3 = new Task(null, "Botar o retrato do velho", "Colocar o retrato de Getúlio na estante, pois ele vai voltar.", Instant.now(), Instant.now(), e2);
+        Task t1 = new Task(null, "Varrer Vassourinha", "Varrer inimigos de brasilia", Instant.now(), Instant.now(), e3, new TaskAuthorDTO(e3));
+        Task t2 = new Task(null, "Fazer 50 anos em 5", "Desenvolver 50 anos de industria no Brasil em 5 anos.", Instant.now(), Instant.now(), e1, new TaskAuthorDTO(e1));
+        Task t3 = new Task(null, "Botar o retrato do velho", "Colocar o retrato de Getúlio na estante, pois ele vai voltar.", Instant.now(), Instant.now(), e2, new TaskAuthorDTO(e2));
 
         taskRepository.saveAll(
                 Arrays.asList(t1,t2,t3)

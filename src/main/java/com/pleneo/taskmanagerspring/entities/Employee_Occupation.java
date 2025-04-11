@@ -21,7 +21,6 @@ public class Employee_Occupation implements Serializable {
         id.setEmployee(employee);
         id.setOccupation(occupation);
     }
-
     @JsonIgnore
     public Employee getEmployee() {
         return id.getEmployee();

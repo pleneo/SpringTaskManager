@@ -1,6 +1,7 @@
 package com.pleneo.taskmanagerspring.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.pleneo.taskmanagerspring.dtos.TaskAuthorDTO;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -28,16 +29,19 @@ public class Task implements Serializable {
     @JoinColumn(name = "employee_id")
     private Employee employee;
 
+    private TaskAuthorDTO author;
+
     public Task() {
     }
 
-    public Task(Long id, String name, String description, Instant deadline, Instant created_date, Employee employee) {
+    public Task(Long id, String name, String description, Instant deadline, Instant created_date, Employee employee, TaskAuthorDTO author) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.deadline = deadline;
         this.created_date = created_date;
         this.employee = employee;
+        this.author = author;
     }
 
     public Long getId() {
@@ -78,6 +82,14 @@ public class Task implements Serializable {
 
     public void setCreated_date(Instant created_date) {
         this.created_date = created_date;
+    }
+
+    public TaskAuthorDTO getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(TaskAuthorDTO authorDTO) {
+        this.author = authorDTO;
     }
 
     @JsonIgnore
