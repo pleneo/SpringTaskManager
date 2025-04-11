@@ -3,6 +3,8 @@ package com.pleneo.taskmanagerspring.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.pleneo.taskmanagerspring.entities.enums.Seniority;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 import java.io.Serializable;
 import java.time.Instant;
@@ -19,9 +21,15 @@ public class Occupation implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotNull
+    @Size(min = 3, max = 50)
     private String name;
     private Seniority seniority;
+
+    @NotNull
     private Instant admission_date;
+
     private Instant demission_date;
 
     @OneToMany(mappedBy = "id.occupation")

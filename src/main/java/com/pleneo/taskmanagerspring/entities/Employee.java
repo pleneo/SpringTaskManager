@@ -1,6 +1,8 @@
 package com.pleneo.taskmanagerspring.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 import java.io.Serializable;
 import java.util.*;
@@ -13,7 +15,12 @@ public class Employee implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
+    @Size(min = 3, max = 50)
     private String first_name;
+
+    @NotNull
+    @Size(min = 3, max = 50)
     private String surname;
 
     //one-to-many (one employee has many tasks, one task has one employee)
