@@ -1,5 +1,6 @@
 package com.pleneo.taskmanagerspring.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.pleneo.taskmanagerspring.entities.enums.Seniority;
 import jakarta.persistence.*;
@@ -28,6 +29,7 @@ public class Occupation implements Serializable {
     private Seniority seniority;
 
     @NotNull
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
     private Instant admission_date;
 
     private Instant demission_date;

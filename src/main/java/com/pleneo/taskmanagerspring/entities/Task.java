@@ -3,6 +3,7 @@ package com.pleneo.taskmanagerspring.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.pleneo.taskmanagerspring.dtos.TaskAuthorDTO;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 
 import java.io.Serializable;
 import java.time.Instant;
@@ -19,10 +20,12 @@ public class Task implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotNull
     private String name;
     private String description;
     private Instant deadline;
-    private Instant created_date;
+    @NotNull
+    private Instant created_date = Instant.now();
 
     //many-to-one cardinality implementation (one Task has one employee, one employee has many tasks)
     @ManyToOne
@@ -34,12 +37,11 @@ public class Task implements Serializable {
     public Task() {
     }
 
-    public Task(Long id, String name, String description, Instant deadline, Instant created_date, Employee employee, TaskAuthorDTO author) {
+    public Task(Long id, String name, String description, Instant deadline, Employee employee, TaskAuthorDTO author) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.deadline = deadline;
-        this.created_date = created_date;
         this.employee = employee;
         this.author = author;
     }
@@ -78,10 +80,6 @@ public class Task implements Serializable {
 
     public Instant getCreated_date() {
         return created_date;
-    }
-
-    public void setCreated_date(Instant created_date) {
-        this.created_date = created_date;
     }
 
     public TaskAuthorDTO getAuthor() {
